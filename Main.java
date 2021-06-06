@@ -6,13 +6,52 @@ class Main {
     List<String> trainB = Arrays.asList("TVC", "SRR", "MAQ", "PNE", "HYB", "NGP", "ITJ", "BPL", "PTA", "NJP", "GHY");
     List<String> trainAStationsTillTrainABStartStation;
     List<String> trainBStationsTillTrainABStartStation;
+    List<String> trainABStations;
+    List<String> trainAStationsFromTrainABEndStation;
+    List<String> trainBStationsFromTrainABEndStation;
 
     String TRAIN_A_START_STATION = "CHN";
     String TRAIN_B_START_STATION = "TVC";
     String TRAIN_AB_START_STATION = "HYB";
+    String TRAIN_AB_STOP_STATION = "BPL";
+    String TRAIN_A_STOP_STATION = "NDL";
+    String TRAIN_B_STOP_STATION = "GHY";
+
+    Map<String, Integer> trainARouteDistance = new HashMap<String, Integer>();
+    Map<String, Integer> trainBRouteDistance = new HashMap<String, Integer>(); 
+
+    trainARouteDistance.put("CHN", 0);
+    trainARouteDistance.put("SLM",350);
+    trainARouteDistance.put("BLR",550);
+    trainARouteDistance.put("KRN",900);
+    trainARouteDistance.put("HYB",1200);
+    trainARouteDistance.put("NGP",1600);
+    trainARouteDistance.put("ITJ",1900);
+    trainARouteDistance.put("BPL",2000);
+    trainARouteDistance.put("AGA",2500);
+    trainARouteDistance.put("NDL",2700);
+
+    trainBRouteDistance.put("TVC",0);
+	  trainBRouteDistance.put("SRR",300);
+	  trainBRouteDistance.put("MAQ",600);
+	  trainBRouteDistance.put("MAO",1000);
+	  trainBRouteDistance.put("PNE",1400);
+	  trainBRouteDistance.put("HYB",2000);
+	  trainBRouteDistance.put("NGP",2400);
+	  trainBRouteDistance.put("ITJ",2700);
+	  trainBRouteDistance.put("BPL",2800);
+	  trainBRouteDistance.put("PTA",3800);
+	  trainBRouteDistance.put("NJP",4200);
+	  trainBRouteDistance.put("GHY",4700);
+
+    Map<String, Integer> distanceFromtrainABStartStation = new HashMap<String, Integer>();
+    //distanceFromtrainABStartStation.put()
+
 
     trainAStationsTillTrainABStartStation = getStationsBetween(TRAIN_A_START_STATION, TRAIN_AB_START_STATION,trainA);
     trainBStationsTillTrainABStartStation = getStationsBetween(TRAIN_B_START_STATION, TRAIN_AB_START_STATION,trainB);
+    trainAStationsFromTrainABEndStation = getStationsBetween(TRAIN_AB_STOP_STATION, TRAIN_A_STOP_STATION,trainA);
+    trainBStationsFromTrainABEndStation = getStationsBetween(TRAIN_AB_STOP_STATION, TRAIN_B_STOP_STATION,trainB);
 
     String inputTrainA = "TRAIN_A ENGINE NDL NDL KRN GHY SLM NJP NGP BLR";
     String inputTrainB = "TRAIN_B ENGINE NJP GHY AGA PNE MAO BPL PTA";
